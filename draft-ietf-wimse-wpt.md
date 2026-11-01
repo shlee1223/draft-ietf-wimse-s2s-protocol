@@ -165,12 +165,12 @@ An example of an HTTP request with both the WIT and WPT from prior examples is s
 ~~~
 {: title="Example HTTP Request with WIT and WPT"}
 
-To validate the WPT in the request, the recipient MUST first validate the WIT as specified in {{Section 5.1.4 of I-D.ietf-wimse-workload-creds}}, then ensure the following:
+To validate the WPT in the request, the recipient MUST first validate the WIT as specified in {{Section 5.1.3 of I-D.ietf-wimse-workload-creds}}, then ensure the following:
 
 * There is exactly one `Authorization` header field in the request and it uses the `WPT` authentication scheme.
 * The credentials of the `WPT` authentication scheme are a single and well-formed JWT.
 * The signature algorithm in the `alg` JOSE header string-equal matches the `alg` attribute of the `jwk` in the `cnf` claim of the WIT.
-  Futhermore, the `alg` value MUST be an acceptable digital signature algorithm according to the recipient's policy and MUST NOT be `none` or a symmetric key algorithm.
+  Furthermore, the `alg` value MUST be an acceptable digital signature algorithm according to the recipient's policy and MUST NOT be `none` or a symmetric key algorithm.
 * The WPT signature is valid using the public key from the confirmation claim of the WIT.
 * The `typ` JOSE header parameter of the WPT conveys a media type of `wpt+jwt`.
 * The `aud` claim of the WPT matches the target URI, or an acceptable alias or normalization thereof, of the HTTP request
@@ -277,7 +277,7 @@ replay protection would not be effective.
 ### Avoid Logging Raw WPT Values
 
 Implementations MUST NOT log raw WPTs by default. Depending on the aggressiveness
-of the replay protection mechinism, a WPT harvested from logs could potentially be replayed
+of the replay protection mechanism, a WPT harvested from logs could potentially be replayed
 and accepted as a legitimate proof. Implementations should therefore treat WPT values as
 sensitive and avoid persisting them in logs.
 
